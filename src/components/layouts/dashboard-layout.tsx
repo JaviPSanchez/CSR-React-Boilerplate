@@ -1,10 +1,10 @@
-import { Home, PanelLeft, Folder, Users, User2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Home, Folder, User2 } from 'lucide-react';
+// import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import logo from '@/assets/logo.png';
 import { Button } from '@/components/ui/button';
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
+import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { cn } from '@/utils/cn';
 
 import {
@@ -16,15 +16,7 @@ import {
 } from '../ui/dropdown';
 import { Link } from '../ui/link';
 
-// Mocking useLogout and useAuthorization if they are not available
-// const useLogout = () => ({
-//   mutate: async () => {
-//     // Perform logout logic here
-//   },
-// });
-const useAuthorization = () => ({ checkAccess: () => true });
-
-// const ROLES = { ADMIN: 'admin' };
+// const useAuthorization = () => ({ checkAccess: () => true });
 
 type SideNavigationItem = {
   name: string;
@@ -43,52 +35,18 @@ const Logo = () => {
   );
 };
 
-const Progress = () => {
-  // const navigate = useNavigate();
-  const [progress, setProgress] = useState(0);
-
-  // useEffect(() => {
-  //   setProgress(0);
-  // }, [navigate.location.pathname]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress(oldProgress => {
-        if (oldProgress === 100) {
-          clearInterval(timer);
-          return 100;
-        }
-        const newProgress = oldProgress + 10;
-        return newProgress > 100 ? 100 : newProgress;
-      });
-    }, 300);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <div
-      className="fixed left-0 top-0 h-1 bg-blue-500 transition-all duration-200 ease-in-out"
-      style={{ width: `${progress}%` }}
-    ></div>
-  );
-};
-
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  // const logout = useLogout();
-  const { checkAccess } = useAuthorization();
+  // const { checkAccess } = useAuthorization();
   const navigate = useNavigate();
 
   const navigation: SideNavigationItem[] = [
     { name: 'Dashboard', to: '.', icon: Home },
     { name: 'Discussions', to: './discussions', icon: Folder },
-    checkAccess() ? { name: 'Users', to: './users', icon: Users } : undefined,
+    // checkAccess() ? { name: 'Users', to: './users', icon: Users } : undefined,
   ].filter(Boolean) as SideNavigationItem[];
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-slate-200">
+    <div className="flex min-h-screen w-full flex-col bg-background">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col border-r bg-black sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <div className="flex h-16 shrink-0 items-center px-4">
@@ -121,14 +79,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       </aside>
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-60">
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-4 border-b bg-slate-400 px-4 sm:static sm:h-auto sm:justify-end sm:border-0 sm:bg-transparent sm:px-6">
-          <Progress />
           <Drawer>
-            <DrawerTrigger asChild>
-              <Button size="icon" variant="outline" className="sm:hidden">
-                <PanelLeft className="size-5" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </DrawerTrigger>
             <DrawerContent
               side="left"
               className="bg-black pt-10 text-white sm:max-w-60"
@@ -184,9 +135,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className={cn('block px-4 py-2 text-sm text-gray-700 w-full')}
-                // onClick={async () => {
-                //   await logout.mutate({});
-                // }}
               >
                 Sign Out
               </DropdownMenuItem>

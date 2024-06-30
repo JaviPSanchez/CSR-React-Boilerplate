@@ -1,12 +1,10 @@
-import { ContentLayout } from '@/components/layouts';
-
 // import { useUser } from '@/lib/auth';
 // import { ROLES } from '@/lib/authorization';
 
 export const DashboardRoute = () => {
   //   const user = useUser();
   return (
-    <ContentLayout title="Dashboard">
+    <>
       <h1 className="text-xl">
         {/* Welcome <b>{`${user.data?.firstName} ${user.data?.lastName}`}</b> */}
         Welcome <b>{`Javier Palomino`}</b>
@@ -38,6 +36,6 @@ export const DashboardRoute = () => {
         <li>Comment on discussions</li>
         <li>Delete all comments</li>
       </ul>
-    </ContentLayout>
+    </>
   );
 };

@@ -1,9 +1,11 @@
+import { MantineProvider } from '@mantine/core';
 import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { MainErrorFallback } from '@/components/errors/main';
-import { Spinner } from '@/components/ui/spinner';
+
+import '@mantine/core/styles.css';
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -11,16 +13,10 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <React.Suspense
-      fallback={
-        <div className="flex h-screen w-screen items-center justify-center">
-          <Spinner size="xl" />
-        </div>
-      }
-    >
+    <MantineProvider>
       <ErrorBoundary FallbackComponent={MainErrorFallback}>
         <HelmetProvider>{children}</HelmetProvider>
       </ErrorBoundary>
-    </React.Suspense>
+    </MantineProvider>
   );
 };

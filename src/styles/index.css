@@ -3,88 +3,142 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  body {
+    @apply bg-background text-colorGrey900;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* Creating animations for dark mode */
+  transition:
+    background-color 0.3s,
+    border 0.3s;
+}
+
+html {
+  /* font-size: 62.5%; */
 }
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: var(--color-grey-600); */
+
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-size: 1.6rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
 }
+
+button {
+  cursor: pointer;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
+
+select:disabled,
+input:disabled {
+  background-color: var(--color-grey-200);
+  color: var(--color-grey-500);
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: -1px;
+}
+
+/* Parent selector, finally 😃 */
+button:has(svg) {
+  line-height: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+img {
+  max-width: 100%;
+
+  /* For dark mode */
+  filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+}
+
+/*
+FOR DARK MODE
+
+--color-grey-0: #18212f;
+--color-grey-50: #111827;
+--color-grey-100: #1f2937;
+--color-grey-200: #374151;
+--color-grey-300: #4b5563;
+--color-grey-400: #6b7280;
+--color-grey-500: #9ca3af;
+--color-grey-600: #d1d5db;
+--color-grey-700: #e5e7eb;
+--color-grey-800: #f3f4f6;
+--color-grey-900: #f9fafb;
+
+--color-blue-100: #075985;
+--color-blue-700: #e0f2fe;
+--color-green-100: #166534;
+--color-green-700: #dcfce7;
+--color-yellow-100: #854d0e;
+--color-yellow-700: #fef9c3;
+--color-silver-100: #374151;
+--color-silver-700: #f3f4f6;
+--color-indigo-100: #3730a3;
+--color-indigo-700: #e0e7ff;
+
+--color-red-100: #fee2e2;
+--color-red-700: #b91c1c;
+--color-red-800: #991b1b;
+
+--backdrop-color: rgba(0, 0, 0, 0.3);
+
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+--shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
+--shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+
+--image-grayscale: 10%;
+--image-opacity: 90%;
+*/
