@@ -1,5 +1,4 @@
 import { Home, Folder, User2 } from 'lucide-react';
-// import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import logo from '@/assets/logo.png';
@@ -16,13 +15,15 @@ import {
 } from '../ui/dropdown';
 import { Link } from '../ui/link';
 
-// const useAuthorization = () => ({ checkAccess: () => true });
-
-type SideNavigationItem = {
+interface SideNavigationItem {
   name: string;
   to: string;
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
-};
+}
+
+interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
 
 const Logo = () => {
   return (
@@ -35,8 +36,9 @@ const Logo = () => {
   );
 };
 
-export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  // const { checkAccess } = useAuthorization();
+export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
+  children,
+}) => {
   const navigate = useNavigate();
 
   const navigation: SideNavigationItem[] = [
@@ -147,4 +149,4 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       </div>
     </div>
   );
-}
+};

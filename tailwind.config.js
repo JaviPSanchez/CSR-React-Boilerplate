@@ -30,8 +30,8 @@ module.exports = {
         /* Grey */
         colorGrey0: '#ffffff',
         colorGrey50: '#f9fafb',
-        // color-grey-100: #f3f4f6;
-        // color-grey-200: #e5e7eb;
+        colorGrey100: '#f3f4f6',
+        colorGrey200: '#e5e7eb',
         // color-grey-300: #d1d5db;
         // --color-grey-400: #9ca3af;
         // --color-grey-500: #6b7280;
