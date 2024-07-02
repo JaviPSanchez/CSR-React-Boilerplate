@@ -1,11 +1,13 @@
-import { Header } from '@/components/ui/header';
+import { Heading } from '@/components/ui/heading';
 import { Row } from '@/components/ui/row';
 
 export const Bookings = () => {
   return (
-    <Row>
-      <Header>All bookings</Header>
-      <p>TEST</p>
-    </Row>
+    <div className="flex p-4">
+      <Heading type="h1" title="DASHBOARD" />
+      <Row>
+        <p>TEST</p>
+      </Row>
+    </div>
   );
 };

@@ -18,29 +18,29 @@ module.exports = {
       },
       colors: {
         /* Indigo */
-        colorBrand50: '#eef2ff',
+        'color-brand-50': '#eef2ff',
         // --color-brand-100: #e0e7ff;
         // --color-brand-200: #c7d2fe;
         // --color-brand-500: #6366f1;
-        // --color-brand-600: #4f46e5;
+        'color-brand-600': '#4f46e5',
         // --color-brand-700: #4338ca;
         // --color-brand-800: #3730a3;
         // --color-brand-900: #312e81;
 
         /* Grey */
-        colorGrey0: '#ffffff',
-        colorGrey50: '#f9fafb',
-        colorGrey100: '#f3f4f6',
-        colorGrey200: '#e5e7eb',
-        // color-grey-300: #d1d5db;
-        // --color-grey-400: #9ca3af;
-        // --color-grey-500: #6b7280;
-        // --color-grey-600: #4b5563;
-        // --color-grey-700: #374151;
-        // --color-grey-800: #1f2937;
-        colorGrey900: '#111827',
+        'color-grey-0': '#ffffff',
+        'color-grey-50': '#f9fafb',
+        'color-grey-100': '#f3f4f6',
+        'color-grey-200': '#e5e7eb',
+        'color-grey-300': '#d1d5db',
+        'color-grey-400': '#9ca3af',
+        'color-grey-500': '#6b7280',
+        'color-grey-600': '#4b5563',
+        'color-grey-700': '#374151',
+        'color-grey-800': '#1f2937',
+        'color-grey-900': '#111827',
 
-        // --backdrop-color: rgba(255, 255, 255, 0.1);
+        'backdrop-color': 'rgba(255, 255, 255, 0.1)',
 
         // --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
         // --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
@@ -48,7 +48,7 @@ module.exports = {
 
         // --border-radius-tiny: 3px;
         // --border-radius-sm: 5px;
-        // --border-radius-md: 7px;
+        'border-radius-md': '7px',
         // --border-radius-lg: 9px;
 
         border: '(var(--border))',
@@ -103,6 +103,12 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      gridTemplateColumns: {
+        'dashboard-layout': '12rem 1fr',
+      },
+      gridTemplateRows: {
+        'dashboard-layout': 'auto 1fr',
       },
     },
   },

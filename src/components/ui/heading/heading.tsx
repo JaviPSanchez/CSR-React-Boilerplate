@@ -1,9 +1,9 @@
 interface HeadingProps {
-  children: string;
+  title: string;
   type: 'h1' | 'h2' | 'h3';
 }
 
-export const Heading: React.FC<HeadingProps> = ({ type, children }) => {
+export const Heading: React.FC<HeadingProps> = ({ type, title }) => {
   const base = 'leading-14';
 
   const styles = {
@@ -12,7 +12,7 @@ export const Heading: React.FC<HeadingProps> = ({ type, children }) => {
     h3: base + ' text-xl font-semibold',
   };
 
-  return <h1 className={styles[type]}>{children}</h1>;
+  return <h1 className={styles[type]}>{title}</h1>;
 };
 
 export default Heading;

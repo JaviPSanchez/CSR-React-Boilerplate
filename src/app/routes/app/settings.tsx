@@ -1,5 +1,5 @@
 import { Heading } from '@/components/ui/heading';
 
 export const Settings = () => {
-  return <Heading type="h1">Update hotel settings</Heading>;
+  return <Heading type="h1" title="Update hotel settings" />;
 };

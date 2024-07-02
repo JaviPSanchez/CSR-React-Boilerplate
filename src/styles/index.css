@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-colorGrey900;
+    @apply bg-background text-color-grey-900;
   }
 }
 
@@ -31,7 +31,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: var(--color-grey-600); */
 
   transition:
     color 0.3s,

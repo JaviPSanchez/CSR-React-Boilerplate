@@ -1,131 +1,18 @@
-import { Home, Folder, User, User2 } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Header } from '@/components/ui/header';
+import { SideBar } from '@/components/ui/sidebar';
 
-import { Button } from '@/components/ui/button';
-import { Drawer, DrawerContent } from '@/components/ui/drawer';
-import { Logo } from '@/components/ui/logo';
-import { cn } from '@/utils/cn';
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../ui/dropdown';
-
-import { SideNavigationItem, DashboardLayoutProps } from './types';
+import { DashboardLayoutProps } from './types';
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
 }) => {
-  const navigate = useNavigate();
-
-  const navigation: SideNavigationItem[] = [
-    { name: 'Dashboard', to: '.', icon: Home },
-    { name: 'Accounts', to: './accounts', icon: Folder },
-    { name: 'Users', to: './users', icon: User },
-    { name: 'Bookings', to: './bookings', icon: Folder },
-    { name: 'Settings', to: './settings', icon: Folder },
-    { name: 'Cabins', to: './cabins', icon: Folder },
-    // checkAccess() ? { name: 'Users', to: './users', icon: Users } : undefined,
-  ].filter(Boolean) as SideNavigationItem[];
-
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
-      <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col border-r bg-black sm:flex">
-        <nav className="flex flex-col items-center gap-4 px-2 py-4">
-          <div className="flex h-16 shrink-0 items-center px-4">
-            <Logo />
-          </div>
-          {navigation.map(item => (
-            <NavLink
-              key={item.name}
-              to={item.to}
-              end={item.name !== 'Discussions'}
-              className={({ isActive }) =>
-                cn(
-                  'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'group flex flex-1 w-full items-center rounded-md p-2 text-base font-medium',
-                  isActive && 'bg-gray-900 text-white',
-                )
-              }
-            >
-              <item.icon
-                className="mr-4 size-6 shrink-0 text-gray-400 group-hover:text-gray-300"
-                aria-hidden="true"
-              />
-              {item.name}
-            </NavLink>
-          ))}
-        </nav>
-      </aside>
-      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-60">
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-4 border-b bg-slate-400 px-4 sm:static sm:h-auto sm:justify-end sm:border-0 sm:bg-transparent sm:px-6">
-          <Drawer>
-            <DrawerContent
-              side="left"
-              className="bg-black pt-10 text-white sm:max-w-60"
-            >
-              <nav className="grid gap-6 text-lg font-medium">
-                <div className="flex h-16 shrink-0 items-center px-4">
-                  <Logo />
-                </div>
-                {navigation.map(item => (
-                  <NavLink
-                    key={item.name}
-                    to={item.to}
-                    end
-                    className={({ isActive }) =>
-                      cn(
-                        'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex flex-1 w-full items-center rounded-md p-2 text-base font-medium',
-                        isActive && 'bg-gray-900 text-white',
-                      )
-                    }
-                  >
-                    <item.icon
-                      className="mr-4 size-6 shrink-0 text-gray-400 group-hover:text-gray-300"
-                      aria-hidden="true"
-                    />
-
-                    {item.name}
-                  </NavLink>
-                ))}
-              </nav>
-            </DrawerContent>
-          </Drawer>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="overflow-hidden rounded-full"
-              >
-                <span className="sr-only">Open user menu</span>
-                <User2 className="size-6 rounded-full" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                onClick={() => navigate('./profile')}
-                className={cn('block px-4 py-2 text-sm text-gray-700')}
-              >
-                Your Profile
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                className={cn('block px-4 py-2 text-sm text-gray-700 w-full')}
-              >
-                Sign Out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </header>
-        <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-          {children}
-        </main>
-      </div>
+    <div className="grid min-h-screen grid-cols-dashboard-layout grid-rows-dashboard-layout">
+      <Header />
+      <SideBar />
+      <main className="grid flex-1 items-start gap-4 bg-color-grey-50 p-4 sm:px-6 sm:py-0 md:gap-8">
+        {children}
+      </main>
     </div>
   );
 };

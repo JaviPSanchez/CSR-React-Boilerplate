@@ -4,7 +4,7 @@ import { Row } from '@/components/ui/row';
 export const Cabins = () => {
   return (
     <Row type="horizontal">
-      <Heading type="h1">All cabins</Heading>
+      <Heading type="h1" title="All cabins" />
       <p>TEST</p>
     </Row>
   );
