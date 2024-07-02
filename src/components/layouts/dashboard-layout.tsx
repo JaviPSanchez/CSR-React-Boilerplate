@@ -1,9 +1,9 @@
-import { Home, Folder, User2 } from 'lucide-react';
+import { Home, Folder, User, User2 } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import logo from '@/assets/logo.png';
 import { Button } from '@/components/ui/button';
 import { Drawer, DrawerContent } from '@/components/ui/drawer';
+import { Logo } from '@/components/ui/logo';
 import { cn } from '@/utils/cn';
 
 import {
@@ -13,28 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown';
-import { Link } from '../ui/link';
 
-interface SideNavigationItem {
-  name: string;
-  to: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
-}
-
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
-
-const Logo = () => {
-  return (
-    <Link className="flex items-center text-white" to="/">
-      <img className="h-8 w-auto" src={logo} alt="Workflow" />
-      <span className="text-sm font-semibold text-white">
-        React Boilerplate
-      </span>
-    </Link>
-  );
-};
+import { SideNavigationItem, DashboardLayoutProps } from './types';
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
@@ -43,7 +23,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
   const navigation: SideNavigationItem[] = [
     { name: 'Dashboard', to: '.', icon: Home },
-    { name: 'Discussions', to: './discussions', icon: Folder },
+    { name: 'Accounts', to: './accounts', icon: Folder },
+    { name: 'Users', to: './users', icon: User },
+    { name: 'Bookings', to: './bookings', icon: Folder },
+    { name: 'Settings', to: './settings', icon: Folder },
+    { name: 'Cabins', to: './cabins', icon: Folder },
     // checkAccess() ? { name: 'Users', to: './users', icon: Users } : undefined,
   ].filter(Boolean) as SideNavigationItem[];
 
@@ -68,10 +52,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               }
             >
               <item.icon
-                className={cn(
-                  'text-gray-400 group-hover:text-gray-300',
-                  'mr-4 size-6 shrink-0',
-                )}
+                className="mr-4 size-6 shrink-0 text-gray-400 group-hover:text-gray-300"
                 aria-hidden="true"
               />
               {item.name}
@@ -104,12 +85,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                     }
                   >
                     <item.icon
-                      className={cn(
-                        'text-gray-400 group-hover:text-gray-300',
-                        'mr-4 size-6 shrink-0',
-                      )}
+                      className="mr-4 size-6 shrink-0 text-gray-400 group-hover:text-gray-300"
                       aria-hidden="true"
                     />
+
                     {item.name}
                   </NavLink>
                 ))}

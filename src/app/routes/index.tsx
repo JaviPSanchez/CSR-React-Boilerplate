@@ -18,41 +18,6 @@ export const createRouter = () =>
         return { Component: LoginRoute };
       },
     },
-    {
-      path: '/accounts',
-      lazy: async () => {
-        const { Accounts } = await import('./accounts');
-        return { Component: Accounts };
-      },
-    },
-    {
-      path: '/bookings',
-      lazy: async () => {
-        const { Bookings } = await import('./bookings');
-        return { Component: Bookings };
-      },
-    },
-    {
-      path: '/cabins',
-      lazy: async () => {
-        const { Cabins } = await import('./cabins');
-        return { Component: Cabins };
-      },
-    },
-    {
-      path: '/users',
-      lazy: async () => {
-        const { NewUsers } = await import('./users');
-        return { Component: NewUsers };
-      },
-    },
-    {
-      path: '/settings',
-      lazy: async () => {
-        const { Settings } = await import('./settings');
-        return { Component: Settings };
-      },
-    },
 
     {
       path: '/app',
@@ -67,6 +32,41 @@ export const createRouter = () =>
           lazy: async () => {
             const { DashboardRoute } = await import('./app/dashboard');
             return { Component: DashboardRoute };
+          },
+        },
+        {
+          path: 'accounts',
+          lazy: async () => {
+            const { Accounts } = await import('./app/accounts');
+            return { Component: Accounts };
+          },
+        },
+        {
+          path: 'bookings',
+          lazy: async () => {
+            const { Bookings } = await import('./app/bookings');
+            return { Component: Bookings };
+          },
+        },
+        {
+          path: 'cabins',
+          lazy: async () => {
+            const { Cabins } = await import('./app/cabins');
+            return { Component: Cabins };
+          },
+        },
+        {
+          path: 'users',
+          lazy: async () => {
+            const { NewUsers } = await import('./app/users');
+            return { Component: NewUsers };
+          },
+        },
+        {
+          path: 'settings',
+          lazy: async () => {
+            const { Settings } = await import('./app/settings');
+            return { Component: Settings };
           },
         },
       ],
