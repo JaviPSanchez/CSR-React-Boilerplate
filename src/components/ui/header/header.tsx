@@ -27,8 +27,8 @@ export const Header = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            variant="outline"
-            size="icon"
+            variant="secondary"
+            size="medium"
             className="overflow-hidden rounded-full"
           >
             <span className="sr-only">Open user menu</span>

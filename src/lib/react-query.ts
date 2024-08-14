@@ -9,7 +9,8 @@ export const queryConfig = {
     // throwOnError: true,
     refetchOnWindowFocus: false,
     retry: false,
-    staleTime: 1000 * 60,
+    // staleTime: 60 * 1000, // time data cashed until re-fetch again
+    staleTime: 0, // time data cashed until re-fetch again
   },
 } satisfies DefaultOptions;
 

@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -14,18 +12,19 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', 'sans-serif'],
+        sono: ['Sono', 'sans-serif'],
       },
       colors: {
         /* Indigo */
         'color-brand-50': '#eef2ff',
-        // --color-brand-100: #e0e7ff;
-        // --color-brand-200: #c7d2fe;
-        // --color-brand-500: #6366f1;
+        'color-brand-100': '#e0e7ff',
+        'color-brand-200': '#c7d2fe',
+        'color-brand-500': '#6366f1',
         'color-brand-600': '#4f46e5',
-        // --color-brand-700: #4338ca;
-        // --color-brand-800: #3730a3;
-        // --color-brand-900: #312e81;
+        'color-brand-700': '#4338ca',
+        'color-brand-800': '#3730a3',
+        'color-brand-900': '#312e81',
 
         /* Grey */
         'color-grey-0': '#ffffff',
@@ -40,75 +39,50 @@ module.exports = {
         'color-grey-800': '#1f2937',
         'color-grey-900': '#111827',
 
+        /* Red */
+
+        'color-red-100': '#fee2e2',
+        'color-red-700': '#b91c1c',
+        'color-red-800': '#991b1b',
+
+        'color-blue-100': '#e0f2fe',
+        'color-blue-700': '#0369a1',
+
+        'color-green-100': '#dcfce7',
+        'color-green-700': '#15803d',
+
+        'color-yellow-100': '#fef9c3',
+        'color-yellow-700': '#a16207',
+
+        'color-silver-100': '#e5e7eb',
+        'color-silver-700': '#374151',
+
+        'color-indigo-100': '#e0e7ff',
+        'color-indigo-700': '#4338ca',
+
         'backdrop-color': 'rgba(255, 255, 255, 0.1)',
-
-        // --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-        // --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
-        // --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-
-        // --border-radius-tiny: 3px;
-        // --border-radius-sm: 5px;
-        'border-radius-md': '7px',
-        // --border-radius-lg: 9px;
-
-        border: '(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: '#eff6fb',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+      },
+      dropShadow: {
+        sm: '0 1px 2px rgba(0, 0, 0, 0.04)',
+        md: '0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06)',
+        lg: '0 2.4rem 3.2rem rgba(0, 0, 0, 0.12)',
       },
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        'radius-tiny': '3px',
+        'radius-sm': '5px',
+        'radius-md': '7px',
+        'radius-lg': '9px',
       },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
+
       gridTemplateColumns: {
         'dashboard-layout': '12rem 1fr',
+        'form-row': '16rem 1fr',
       },
       gridTemplateRows: {
         'dashboard-layout': 'auto 1fr',
+      },
+      aspectRatio: {
+        '3/2': '3 / 2',
       },
     },
   },

@@ -118,6 +118,7 @@ module.exports = {
             alphabetize: { order: 'asc', caseInsensitive: true },
           },
         ],
+        'import/export': 'off',
         'import/default': 'off',
         'import/no-named-as-default-member': 'off',
         'import/no-named-as-default': 'off',
@@ -138,6 +139,7 @@ module.exports = {
             ignoreMiddleExtensions: true,
           },
         ],
+        'react/display-name': 'off',
       },
     },
     // {

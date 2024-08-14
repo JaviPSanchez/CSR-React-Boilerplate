@@ -1,76 +1,58 @@
-import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
-import * as React from 'react';
+import { VariantProps, cva } from 'class-variance-authority';
+import { type ClassValue, clsx } from 'clsx';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-import { cn } from '@/utils/cn';
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
-// import { Spinner } from '../spinner';
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  // Custom Props
+  disabled?: boolean;
+  isLoading?: boolean;
+  type?: 'submit' | 'reset';
+}
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1  focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+  'flex w-fit items-center justify-center rounded-md border border-color-grey-200 text-sm font-medium',
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
-        outline:
-          'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
-        secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+        primary:
+          'bg-color-brand-600 text-color-brand-50 hover:bg-color-brand-700',
+        secondary: 'bg-color-grey-0 text-color-grey-600 hover:bg-color-grey-50',
+        danger: 'bg-color-red-700 text-color-red-100  hover:bg-color-red-800',
       },
       size: {
-        default: 'h-9 px-4 py-2',
+        medium: 'h-9 px-4 py-2',
         sm: 'h-8 rounded-md px-3 text-xs',
         lg: 'h-10 rounded-md px-8',
-        icon: 'size-9',
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'default',
+      variant: 'primary',
+      size: 'medium',
     },
   },
 );
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-    isLoading?: boolean;
-    icon?: React.ReactNode;
-  };
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      children,
-      isLoading,
-      icon,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : 'button';
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ disabled, className, variant, size, children, type, ...props }, ref) => {
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <button
         ref={ref}
+        className={cn(buttonVariants({ className, size, variant, ...props }))}
+        type={type}
         {...props}
+        disabled={disabled}
       >
-        {/* {isLoading && <Spinner size="sm" className="text-current" />} */}
-        {!isLoading && icon && <span className="mr-2">{icon}</span>}
-        <span className="mx-2">{children}</span>
-      </Comp>
+        {children}
+      </button>
     );
   },
 );
-Button.displayName = 'Button';
 
 export { Button, buttonVariants };

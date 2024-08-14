@@ -1,5 +1,10 @@
+// NewUsers.tsx
+import React from 'react';
+
 import { Heading } from '@/components/ui/heading';
 
-export const NewUsers = () => {
-  return <Heading type="h1" title="Create a new user" />;
+export const NewUsers: React.FC = () => {
+  return <Heading type="h1">Create a new user</Heading>;
 };
+
+export default NewUsers;

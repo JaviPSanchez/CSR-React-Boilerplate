@@ -1,6 +1,6 @@
 import { add } from 'date-fns';
 
-import { supabaseUrl } from '@/services/supabase';
+import { supabaseUrl } from '@/services/api-supabase';
 
 const imageUrl = `${supabaseUrl}/storage/v1/object/public/cabin-images/`;
 

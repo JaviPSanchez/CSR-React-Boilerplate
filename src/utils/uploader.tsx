@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { bookings, cabins, guests } from '../assets/index';
 import { Button } from '../components/ui/button';
-import supabase from '../services/supabase';
+import supabase from '../services/api-supabase';
 
 import { subtractDates } from './format';
 

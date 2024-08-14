@@ -10,8 +10,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     <div className="grid min-h-screen grid-cols-dashboard-layout grid-rows-dashboard-layout">
       <Header />
       <SideBar />
-      <main className="grid flex-1 items-start gap-4 bg-color-grey-50 p-4 sm:px-6 sm:py-0 md:gap-8">
-        {children}
+      <main className=" bg-color-grey-50 p-4">
+        <div className="mx-auto max-w-[120rem]">{children}</div>
       </main>
     </div>
   );

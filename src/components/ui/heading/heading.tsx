@@ -1,18 +1,20 @@
 interface HeadingProps {
-  title: string;
   type: 'h1' | 'h2' | 'h3';
+  children: React.ReactNode; // Changed to use children instead of title
 }
 
-export const Heading: React.FC<HeadingProps> = ({ type, title }) => {
+export const Heading: React.FC<HeadingProps> = ({ type, children }) => {
   const base = 'leading-14';
 
-  const styles = {
+  const styles: Record<string, string> = {
     h1: base + ' text-2xl font-bold',
     h2: base + ' text-xl font-bold',
     h3: base + ' text-xl font-semibold',
   };
 
-  return <h1 className={styles[type]}>{title}</h1>;
+  const Tag = type; // Dynamically select the HTML tag
+
+  return <Tag className={styles[type]}>{children}</Tag>;
 };
 
 export default Heading;
